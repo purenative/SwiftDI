@@ -3,9 +3,13 @@ public class DIContainer {
     private let fabricStorage = DIContainerStorage<DIFabricObjectProvider>()
     private let instanceStorage = DIContainerStorage<DIInstanceObjectProvider>()
     
+    public init() {
+        
+    }
+    
     public func registerDependency<T>(_ type: T.Type,
-                               scope: DIObjectScope = .fabric,
-                               factory: @escaping () -> T) {
+                                      scope: DIObjectScope = .fabric,
+                                      factory: @escaping () -> T) {
         
         switch scope {
         case .fabric:
