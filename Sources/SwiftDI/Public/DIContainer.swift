@@ -3,7 +3,7 @@ public class DIContainer {
     private let fabricStorage = DIContainerStorage<DIFabricObjectProvider>()
     private let instanceStorage = DIContainerStorage<DIInstanceObjectProvider>()
     
-    func registerDependency<T>(_ type: T.Type,
+    public func registerDependency<T>(_ type: T.Type,
                                scope: DIObjectScope = .fabric,
                                factory: @escaping () -> T) {
         
@@ -17,7 +17,7 @@ public class DIContainer {
         
     }
     
-    func loadDependency<T>() -> T {
+    public func loadDependency<T>() -> T {
         if instanceStorage.typeExists(T.self) {
             return instanceStorage.load(T.self)
         }
