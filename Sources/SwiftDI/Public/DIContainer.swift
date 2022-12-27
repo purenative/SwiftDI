@@ -7,9 +7,9 @@ public class DIContainer {
         
     }
     
-    public func registerDependency<T>(_ type: T.Type,
+    public func registerDependency<E>(_ type: E.Type,
                                       scope: DIObjectScope = .fabric,
-                                      factory: @escaping () -> T) {
+                                      factory: @escaping () -> E) {
         
         switch scope {
         case .fabric:
@@ -17,6 +17,21 @@ public class DIContainer {
             
         case .instance:
             instanceStorage.register(type, factory: factory)
+        }
+        
+    }
+    
+    public func registerDependency<E, RE>(_ type: E.Type,
+                                          relativeTo relativeType: RE.Type,
+                                          scope: DIObjectScope = .fabric,
+                                          factory: @escaping () -> E) {
+        
+        switch scope {
+        case .fabric:
+            fabricStorage.register(type, relativeType: relativeType, factory: factory)
+            
+        case .instance:
+            instanceStorage.register(type, relativeType: relativeType, factory: factory)
         }
         
     }
