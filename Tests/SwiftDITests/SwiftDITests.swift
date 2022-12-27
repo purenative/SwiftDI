@@ -1,12 +1,24 @@
 import XCTest
 @testable import SwiftDI
 
+class Test1 {
+    
+}
+
+class Test2 {
+    
+}
+
 final class SwiftDITests: XCTestCase {
+    
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
         
-//        XCTAssertEqual(SwiftDI().text, "Hello, World!")
+        let container = DIContainer()
+        
+        let test2 = Test2()
+        
+        let test1: Test1 = container.loadDependency(relativeTo: test2)
+        
     }
+    
 }

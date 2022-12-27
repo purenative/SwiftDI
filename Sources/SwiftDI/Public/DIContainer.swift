@@ -13,22 +13,32 @@ public class DIContainer {
         
         switch scope {
         case .fabric:
-            fabricStorage.regiter(type, factory: factory)
+            fabricStorage.register(type, factory: factory)
             
         case .instance:
-            instanceStorage.regiter(type, factory: factory)
+            instanceStorage.register(type, factory: factory)
         }
         
     }
     
-    public func loadDependency<T>() -> T {
-        if instanceStorage.typeExists(T.self) {
-            return instanceStorage.load(T.self)
+    public func loadDependency<E>() -> E {
+        if instanceStorage.typeExists(E.self) {
+            return instanceStorage.load(E.self)
         }
-        if fabricStorage.typeExists(T.self) {
-            return fabricStorage.load(T.self)
+        if fabricStorage.typeExists(E.self) {
+            return fabricStorage.load(E.self)
         }
-        fatalError("Type \(String(describing: T.self)) not registered")
+        fatalError("Type \(String(describing: E.self)) not registered")
+    }
+    
+    public func loadDependency<E, RE>(relativeTo relativeEntity: RE) -> E {
+        if instanceStorage.typeExists(E.self) {
+            return instanceStorage.load(E.self, relativeType: RE.self)
+        }
+        if fabricStorage.typeExists(E.self) {
+            return fabricStorage.load(E.self, relativeType: RE.self)
+        }
+        fatalError("Type \(String(describing: E.self)) relative to \(String(describing: RE.self)) not registered")
     }
     
 }
