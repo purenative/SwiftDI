@@ -1,3 +1,14 @@
+//
+// DIInstanceObjectProvider.swift
+// SwiftDI
+//
+// MIT License
+//
+// Copyright (c) 2022 Pure Native
+//
+
+import Foundation
+
 final class DIInstanceObjectProvider: DIObjectProvider {
     
     private var _instance: Any!

@@ -1,3 +1,12 @@
+//
+// SwiftDITests.swift
+// SwiftDI
+//
+// MIT License
+//
+// Copyright (c) 2022 Pure Native
+//
+
 import XCTest
 @testable import SwiftDI
 
