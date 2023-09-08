@@ -1,3 +1,14 @@
+//
+// DIContainer.swift
+// SwiftDI
+//
+// MIT License
+//
+// Copyright (c) 2022 Pure Native
+//
+
+import Foundation
+
 public class DIContainer {
     
     private let fabricStorage = DIContainerStorage<DIFabricObjectProvider>()

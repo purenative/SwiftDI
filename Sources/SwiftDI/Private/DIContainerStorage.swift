@@ -1,3 +1,14 @@
+//
+// DIContainerStorage.swift
+// SwiftDI
+//
+// MIT License
+//
+// Copyright (c) 2022 Pure Native
+//
+
+import Foundation
+
 final class DIContainerStorage<OP: DIObjectProvider> {
     
     private var providers = [DIEntityTypeKey: OP]()
